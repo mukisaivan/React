@@ -2,9 +2,10 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className='About'>
-      <p>About</p>
-    </div>
+    <main className='About'>
+      <h2>About</h2>
+      <p style={{ marginTop: "1rem" }}> Followed a tutorial to make this project using react JS</p>
+    </main>
   )
 }
 
