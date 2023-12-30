@@ -1,12 +1,24 @@
-import React from 'react'
+
+import { useStoreState } from 'easy-peasy'
 import Feed from './Feed'
 
-const Home = ({posts}) => {
+const Home = ({isLoading, fetchError}) => {
+
+  const searchResults = useStoreState(state => state.searchResults)
+
   return (
     <main className='Home'>
+      
+      {isLoading && <p className="statusMsg">Loading posts...</p>}
+      {!isLoading && fetchError && <p className="statusMsg" style={{ color: "red" }}>{fetchError}</p>}
+      {!isLoading && !fetchError && (searchResults.length ? <Feed posts={searchResults} /> : <p className="statusMsg">No posts to display.</p>)}
+        
+      
+      {/* BEFORE USING CUSTOM HOOK
       {posts.length ? 
         (<Feed posts={posts}/> ) : (<p style={{marginTop: "2rem"}}>No posts to display</p>)
-      }
+      } */}
+      
     </main>
   )
 }

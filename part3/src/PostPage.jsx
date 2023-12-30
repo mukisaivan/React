@@ -1,12 +1,24 @@
 import { useParams, Link } from 'react-router-dom'
 
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import { useNavigate } from 'react-router-dom';
 
-import React from 'react'
+const PostPage = () => {
+  const { id } = useParams()
 
-const PostPage = ({ posts, handleDelete }) => {
+
+  const deletePost = useStoreActions((actions) => actions.deletePost);
+  const getPostById = useStoreState((state) => state.getPostById);
+  const post = getPostById(id);
   
-  const {id} = useParams()
-  const post = posts.find((post)=> (post.id).toString()===id) 
+  const navigate = useNavigate()
+
+  
+
+  async function handleDelete(id) {
+    deletePost(id)
+    navigate("/")
+  }
 
   return (
     <main className='PostPage'>
