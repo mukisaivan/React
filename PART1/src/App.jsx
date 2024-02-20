@@ -71,8 +71,7 @@ function App() {
       finally {
           setLoading(false)
       }
-    },[])
-
+    }, [])
 
     const handleCheck2 = async (id) => {
         const listItems = items.map((item) => (
