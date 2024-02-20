@@ -66,9 +66,7 @@ function App() {
           
       } catch (error) {
         console.log(`Error: ${error.message}`);
-        setFetchError(error.message)
-        
-          
+        setFetchError(error.message)    
       }
       finally {
           setLoading(false)
